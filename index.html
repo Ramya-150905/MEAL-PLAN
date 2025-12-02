@@ -21,8 +21,6 @@
     </nav>
   </div>
 </header>
-
-<!-- FORM -->
 <form onsubmit="return false;">
     <div class="forms">
       <label>Enter Height (in cm)</label>
@@ -58,13 +56,8 @@
       </select>
     </div>
 </form>
-
 <br>
-
-<!-- BUTTON -->
 <button class="buttons" onclick="generateMeals()">Generate Meals</button>
-
-<!-- OUTPUT -->
 <div id="meal-output" style="padding:20px; font-size:18px;"></div>
 
 <footer>
@@ -93,8 +86,6 @@ function validateInputs() {
     }
     return true;
 }
-
-// GENERATE MEALS
 async function generateMeals() {
 
     if (!validateInputs()) return;
@@ -139,8 +130,6 @@ async function generateMeals() {
         console.error(error);
     }
 }
-
-// SHOW RECIPE
 async function showRecipe(mealId, targetDiv) {
     document.getElementById(targetDiv).innerHTML = "Loading recipe...";
 
