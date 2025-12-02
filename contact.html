@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-
-<!-- HEADER -->
 <header>
   <div>
     <img src="https://meal-planner-project-js-om-prakash.netlify.app/assets/Logo.jpg" alt="Yum Me Logo" class="logo">
@@ -23,8 +20,6 @@
     </nav>
   </div>
 </header>
-
-<!-- CONTACT SECTION -->
 <section class="contact-section">
   <div class="contact-container">
     
@@ -50,11 +45,7 @@
 
   </div>
 </section>
-
-<!-- OUTPUT BOX -->
 <div id="contact-output" style="padding:20px; font-size:18px; text-align:center;"></div>
-
-<!-- FOOTER -->
 <footer>
   <p>Copyright © 2025 All Rights Reserved.</p>
   <div class="social-icons">
@@ -64,25 +55,16 @@
     <a href="#"><i class="fa-brands fa-youtube"></i></a>
   </div>
 </footer>
-
-
-<!-- JAVASCRIPT -->
 <script>
 function sendData() {
-
-    // Fetching input values
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const mobile = document.getElementById("mobile").value;
     const message = document.getElementById("message").value;
-
-    // Validation
     if (!name || !email || !mobile || !message) {
         alert("Please fill out all fields!");
         return;
     }
-
-    // Displaying customer details
     document.getElementById("contact-output").innerHTML = `
         <h2>Customer Details Received</h2>
         <p><strong>Name:</strong> ${name}</p>
@@ -94,4 +76,5 @@ function sendData() {
 </script>
 
 </body>
+
 </html>
