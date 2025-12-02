@@ -1,0 +1,145 @@
+header {
+  background-color: violet;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.logo {
+  height: 50px;
+  padding: left;
+}
+
+nav a{
+  color: white;
+  align-items: center;
+  text-decoration: none;
+  margin: 20px 40px ;
+  font-weight: bold;
+  justify-content: center;
+
+}
+.head{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a:hover {
+  color: black;
+}
+
+
+
+.contact-section {
+  padding: 80px 0;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  gap: 80px;  
+}
+
+
+.contact-left {
+  flex: 1;
+  color: #333;
+}
+
+.contact-left h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #2b5c2b;
+}
+
+.contact-left p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+
+.contact-right {
+  flex: 1;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-right input,
+.contact-right textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.contact-right textarea {
+  resize: none;
+  height: 100px;
+}
+
+.contact-right button {
+  background-color: #2b5c2b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-right button:hover {
+  background-color: #3d703d;
+}
+
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
+}
+
+footer p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: #555;
+  font-size: 22px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4CAF50; /* light green hover color */
+}
+
+
+
+footer {
+  background-color: violet;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  margin-top: 25px;
+}

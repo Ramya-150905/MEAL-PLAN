@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+
+  
+}
+
+header {
+  background-color: violet;
+  color: white;
+  padding: 10px 30px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  }
+
+/* .logo {
+  height: 50px;
+ 
+}
+
+nav a{
+  color: white;
+  align-items: center;
+  text-decoration: none;
+  margin: 20px 40px ;
+  font-weight: bold;
+  justify-content: center;
+
+} */
+ .logo {
+  height: 50px;
+}
+
+nav a{
+   
+     font-family: sans-serif;
+     font-size: 1rem;
+     margin-top: 3rem;
+    color: white;
+     text-decoration: none;
+     padding: 50px;
+
+}
+.head{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a:hover {
+  color: black;
+}
+
+
+.about-section {
+  padding: 80px 0;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  gap: 60px;
+  padding: 20px;
+}
+
+
+.about-left img {
+  width: 400px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 25px;   
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.about-right {
+  flex: 1;
+  color: #333;
+}
+
+.about-right h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  color: #2b5c2b;
+}
+
+.about-right p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #2b5c2b;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #3d703d;
+}
+
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
+}
+
+footer p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: #555;
+  font-size: 22px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4CAF50; /* light green hover color */
+}
+
+
+
+footer {
+  background-color: violet;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  margin-top: 100px;
+
+}
+
+
+
+@media (max-width: 600px) {
+  .about-img {
+    width: 90%;
+    height: auto;
+  }
+} ;

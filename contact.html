@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Yum Me</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <img src="https://meal-planner-project-js-om-prakash.netlify.app/assets/Logo.jpg" alt="Yum Me Logo" class="logo">
+  </div>
+  <div class="head">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-container">
+    
+    <div class="contact-left">
+      <h2>Want To Get In Touch?</h2>
+      <p>Have something you'd like to let us know?</p>
+      <p>
+        Whether you have a comment on a recipe or an idea to share, we value your feedback.
+        We are available on social media platforms like Twitter, Instagram, Facebook, and WhatsApp.
+      </p>
+      <p>We will be glad to hear from your side.</p>
+    </div>
+
+    <div class="contact-right">
+      <form onsubmit="return false;">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="mobile" placeholder="Your Mobile No" required>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <button type="button" onclick="sendData()">Send</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTPUT BOX -->
+<div id="contact-output" style="padding:20px; font-size:18px; text-align:center;"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Copyright © 2025 All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+  </div>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+function sendData() {
+
+    // Fetching input values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const message = document.getElementById("message").value;
+
+    // Validation
+    if (!name || !email || !mobile || !message) {
+        alert("Please fill out all fields!");
+        return;
+    }
+
+    // Displaying customer details
+    document.getElementById("contact-output").innerHTML = `
+        <h2>Customer Details Received</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Mobile:</strong> ${mobile}</p>
+        <p><strong>Message:</strong> ${message}</p>
+    `;
+}
+</script>
+
+</body>
+</html>
