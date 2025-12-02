@@ -3,48 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Yum Me Meal Prep</title>
-  <link rel="stylesheet" href="about.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <title>Meal Planner</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
 </head>
 <body>
-  <header>
-    <header><div>
+
+<header>
+  <div>
     <img src="https://meal-planner-project-js-om-prakash.netlify.app/assets/Logo.jpg" alt="Yum Me Logo" class="logo">
-  </div><div class="head"> <nav>
-      <a href="index.html">Home</a>
+  </div>
+  <div class="head">
+    <nav>
+      <a href="#">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-    </nav></div>
-  </header>
-  </header>
+    </nav>
+  </div>
+</header>
 
-  
-  <section class="about-section">
-    <div class="about-container">
-      
-      <div class="about-left">
-        <img src="veg.jpg" alt="Healthy bowl image">
-      </div>
-
-      <div class="about-right">
-        <h2>Who We Are</h2>
-        <p>
-          Yum-Me Meal Planner is here to help you cook delicious meals with less stress and more joy.
-          Based on your calories and BMR, we offer recipes and cooking advice for everyone.
-        </p>
-        <p>
-          Yum-Me Meal Planner was founded in 2023 by a team of passionate food lovers who wanted to make
-          healthy cooking simple for home cooks with more than 1,500 tested recipes and meal plans.
-        </p>
-        <p>
-          We're supported by a talented group of recipe developers, food writers, photographers, and other creative professionals.
-        </p>
-        <a href="contact.html" class="btn">Contact</a>
-      </div>
+<!-- FORM -->
+<form onsubmit="return false;">
+    <div class="forms">
+      <label>Enter Height (in cm)</label>
+      <input type="number" placeholder="Enter Height" id="height" required>
     </div>
-  </section>
+
+    <div class="forms">
+      <label>Enter Weight (in kg)</label>
+      <input type="number" placeholder="Enter Weight" id="weight" required>
+    </div>
+
+    <div class="forms">
+      <label>Enter Age</label>
+      <input type="number" placeholder="Enter Age" id="age" required>
+    </div>
+
+    <div class="forms">
+      <label>Choose Gender</label>
+      <select id="gender" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+
+    <div class="forms">
+      <label>Choose Activity Level</label>
+      <select id="activity" required>
+        <option value="">Select</option>
+        <option>Light</option>
+        <option>Moderate</option>
+        <option>Active</option>
+      </select>
+    </div>
+</form>
+
+<br>
+
+<!-- BUTTON -->
+<button class="buttons" onclick="generateMeals()">Generate Meals</button>
+
+<!-- OUTPUT -->
+<div id="meal-output" style="padding:20px; font-size:18px;"></div>
+
 <footer>
   <p>Copyright © 2025 All Rights Reserved.</p>
   <div class="social-icons">
@@ -54,6 +76,103 @@
     <a href="#"><i class="fa-brands fa-youtube"></i></a>
   </div>
 </footer>
-<script src="script.js"></script>
+
+<script>
+
+// VALIDATION
+function validateInputs() {
+    const height = document.getElementById("height").value;
+    const weight = document.getElementById("weight").value;
+    const age = document.getElementById("age").value;
+    const gender = document.getElementById("gender").value;
+    const activity = document.getElementById("activity").value;
+
+    if (!height || !weight || !age || !gender || !activity) {
+        alert("Please fill all input fields to generate meals.");
+        return false;
+    }
+    return true;
+}
+
+// GENERATE MEALS
+async function generateMeals() {
+
+    if (!validateInputs()) return;
+
+    document.getElementById("meal-output").innerHTML = "Loading meals...";
+
+    try {
+        const breakfastData = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+        const lunchData = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+        const dinnerData = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+
+        const breakfast = (await breakfastData.json()).meals[0];
+        const lunch = (await lunchData.json()).meals[0];
+        const dinner = (await dinnerData.json()).meals[0];
+
+        document.getElementById("meal-output").innerHTML = `
+            <h2>Your Meal Plan</h2><br>
+
+            <h3>🍳 Breakfast</h3>
+            <p><strong>${breakfast.strMeal}</strong></p>
+            <img src="${breakfast.strMealThumb}" width="200"><br>
+            <button onclick="showRecipe('${breakfast.idMeal}', 'breakfast-recipe')">Show Recipe</button>
+            <div id="breakfast-recipe" class="recipe-box"></div>
+            <br><br>
+
+            <h3>🍛 Lunch</h3>
+            <p><strong>${lunch.strMeal}</strong></p>
+            <img src="${lunch.strMealThumb}" width="200"><br>
+            <button onclick="showRecipe('${lunch.idMeal}', 'lunch-recipe')">Show Recipe</button>
+            <div id="lunch-recipe" class="recipe-box"></div>
+            <br><br>
+
+            <h3>🍽 Dinner</h3>
+            <p><strong>${dinner.strMeal}</strong></p>
+            <img src="${dinner.strMealThumb}" width="200"><br>
+            <button onclick="showRecipe('${dinner.idMeal}', 'dinner-recipe')">Show Recipe</button>
+            <div id="dinner-recipe" class="recipe-box"></div>
+        `;
+    } 
+    catch (error) {
+        document.getElementById("meal-output").innerHTML = "Failed to load meals!";
+        console.error(error);
+    }
+}
+
+// SHOW RECIPE
+async function showRecipe(mealId, targetDiv) {
+    document.getElementById(targetDiv).innerHTML = "Loading recipe...";
+
+    try {
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+        const data = await response.json();
+        const meal = data.meals[0];
+
+        let ingredients = "";
+        for (let i = 1; i <= 20; i++) {
+            const item = meal[`strIngredient${i}`];
+            const measure = meal[`strMeasure${i}`];
+
+            if (item && item.trim()) {
+                ingredients += `<li>${measure} - ${item}</li>`;
+            }
+        }
+
+        document.getElementById(targetDiv).innerHTML = `
+            <h4>Ingredients:</h4>
+            <ul>${ingredients}</ul>
+
+            <h4>Instructions:</h4>
+            <p>${meal.strInstructions}</p>
+        `;
+    }
+    catch (error) {
+        document.getElementById(targetDiv).innerHTML = "Failed to load recipe!";
+    }
+}
+
+</script>
+
 </body>
 </html>
